@@ -1,0 +1,81 @@
+---
+interface Props {
+  title: string;
+  lang: 'en' | 'es';
+}
+
+const { title, lang } = Astro.props;
+
+const menuItems = {
+  es: [
+    { href: "#noticias", text: "Noticias" },
+    { href: "#multimedia", text: "Multimedia" },
+    { href: "#evidencias", text: "Implicados" },
+    { href: "#testimonios", text: "Testimonios" },
+    { href: "#advertencia", text: "Advertencia" },
+    { href: "#enlaces", text: "Enlaces" }
+  ],
+  en: [
+    { href: "#news", text: "News" },
+    { href: "#multimedia", text: "Multimedia" },
+    { href: "#evidence", text: "Involves" },
+    { href: "#testimonials", text: "Testimonials" },
+    { href: "#warning", text: "Warning" },
+    { href: "#links", text: "Links" }
+  ]
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-gray-50">
+    <header class="bg-red-600 text-white p-4 sticky top-0 z-50">
+      <nav class="container mx-auto px-4">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <h1 class="text-xl sm:text-2xl font-bold text-center sm:text-left">
+            {lang === 'es' ? 'Víctimas Afectadas por Thomas Anders' : 'Victims Affected by Thomas Anders'}
+          </h1>
+          <div class="space-x-4">
+            <a href="/" class="hover:underline">Español</a>
+            <a href="/en" class="hover:underline">English</a>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6 text-sm mt-4">
+          {menuItems[lang].map(item => (
+            <a href={item.href} class="hover:underline whitespace-nowrap">{item.text}</a>
+          ))}
+          <a href="https://twitter.com/ConcertVictims" target="_blank" rel="noopener noreferrer" 
+             class="hover:underline flex items-center whitespace-nowrap">
+            <svg class="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            X (Twitter)
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main class="container mx-auto px-4 py-8">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 100px;
+  }
+}
+</style>

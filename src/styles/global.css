@@ -1,0 +1,13 @@
+.youtube-video {
+    width: 100%;
+    height: auto;
+  }
+
+  .kiss-fm-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .kiss-fm-container h3 {
+    margin-right: 0.5rem; /* Ajusta este valor según tus necesidades */
+  }

@@ -1,7 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import VideoHero from "../components/VideoHero.astro";
+import Analytics from '@vercel/analytics/astro'
 ---
+
+<html lang="en">
+	<head>
+    <meta charset="utf-8" />
+    <!-- ... -->
+    <Analytics />
+	</head>
+	<body>
+		<slot />
+  </body>
+</html>
 
 <Layout
   title="Víctimas Afectadas por Thomas Anders - Conciertos Cancelados 2023"
